@@ -2,16 +2,6 @@ table.js-table {
     width: 100%;
 }
 
-tr.js-table-header {
-    background-color: rgb(226, 223, 223);
-    line-height: 2em;
-}
-
-tr.js-table-row > td {
-    outline: 1px rgb(183, 183, 183) solid;
-    line-height: 2em;
-}
-
 th.js-table-number, td.js-table-number {
     text-align: right;
 }

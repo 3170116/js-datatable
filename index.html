@@ -5,29 +5,118 @@
   <title>Js DataTable</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link type="text/css" rel="stylesheet" href="js-datatable.css" />
   <link type="text/css" rel="stylesheet" href="site.css" />
 </head>
 <body>
-  
-    <h4>
-        Add below link and script to your project to generate datatables:
-    </h4>
-    <span class="code">
-        https://github.com/3170116/js-datatable/js-datatable.css
-    </span>
-    <br />
-    <span class="code">
-        https://github.com/3170116/js-datatable/js-datatable.js
-    </span>
 
-    <div id="dt"></div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">JS - DataTable</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="docs.html">Docs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="examples.html">Examples</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label class="h5">
+                        Add below link and script to your project to generate datatables:
+                    </label>
+                </div>
+                <div class="form-group">
+                    <div class="col-auto">
+                        <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                        <div class="input-group mb-2">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+                                    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+                                    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+                                  </svg>
+                            </div>
+                          </div>
+                          <input type="text" class="form-control" value="https://github.com/3170116/js-datatable/js-datatable.css" readonly>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                        <div class="input-group mb-2">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-slash" viewBox="0 0 16 16">
+                                    <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"/>
+                                  </svg>
+                            </div>
+                          </div>
+                          <input type="text" class="form-control" value="https://github.com/3170116/js-datatable/js-datatable.js" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div id="dt"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="h4">
+                    Usage:
+                </label>
+                </div>
+                <div class="form-group">
+                    <div class="code"></div>
+                    <span class="small font-weight-bold">HTML</span>
+                </div>
+                <div class="form-group">
+                    <div class="code">
+                        newJsDataTable('js-datatable', {
+                        <br />
+                        <span class="ml-2">
+                            'type': 'demo'
+                        </span>
+                        <br />
+                        });
+                    </div>
+                    <span class="small font-weight-bold">Javascript</span>
+                </div>
+                <div class="form-group">
+                    <div class="alert alert-primary" role="alert">
+                        DataTables need Bootstrap css file to be beautiful, so make sure that you have included the link.
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="js-datatable.js"></script>
     <script type="text/javascript">
-        newJsDataTable('dt', {
-            'type': 'demo'
-        });
+
+        window.onload = function() {
+            newJsDataTable('dt', {
+                'type': 'demo'
+            });
+
+            document.getElementsByClassName('code')[0].innerText = '<div id="dt"></div>';
+        };
+        
     </script>
 
 </body>

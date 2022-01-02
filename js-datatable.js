@@ -4,11 +4,11 @@ function newJsDataTable(id, options) {
     let dt = document.getElementById(id);
 
     //Add a 'table' tag
-    dt.innerText = '<table class="js-table">';
+    dt.innerText = '<table class="js-table table table-striped table-bordered">';
 
     //Add headers
     if (options.type == 'demo') {
-        let headers = '<tr class="js-table-header"><th>First Name</th><th>Job</th><th class="js-table-number">Age</th></tr>'
+        let headers = '<tr class="js-table-header"><th scope="col">First Name</th><th scope="col">Job</th><th class="js-table-number" scope="col">Age</th></tr>'
         dt.innerText += headers;
     }
 
