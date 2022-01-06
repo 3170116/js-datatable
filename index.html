@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-auto">
-                        <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                        <label class="sr-only" for="inlineFormInputGroup">Javascript</label>
                         <div class="input-group mb-2">
                           <div class="input-group-prepend">
                             <div class="input-group-text">
@@ -48,11 +48,11 @@
                                   </svg>
                             </div>
                           </div>
-                          <input type="text" class="form-control" value="https://github.com/3170116/js-datatable/js-datatable.css" readonly>
+                          <input type="text" class="form-control" value="https://github.com/3170116/js-datatable/blob/930e7a7052d08c35a76fe59e4755a286517da4e7/js-datatable.css" readonly>
                         </div>
                     </div>
                     <div class="col-auto">
-                        <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                        <label class="sr-only" for="inlineFormInputGroup">Css</label>
                         <div class="input-group mb-2">
                           <div class="input-group-prepend">
                             <div class="input-group-text">
@@ -61,7 +61,7 @@
                                   </svg>
                             </div>
                           </div>
-                          <input type="text" class="form-control" value="https://github.com/3170116/js-datatable/js-datatable.js" readonly>
+                          <input type="text" class="form-control" value="https://github.com/3170116/js-datatable/blob/930e7a7052d08c35a76fe59e4755a286517da4e7/js-datatable.js" readonly>
                         </div>
                     </div>
                 </div>
@@ -84,10 +84,74 @@
                 </div>
                 <div class="form-group">
                     <div class="code">
-                        newJsDataTable('js-datatable', {
+                        newJsDataTable('dt', {
                         <br />
                         <span class="ml-2">
-                            'type': 'demo'
+                            'type': 'client',
+                        </span>
+                        <br />
+                        <span class="ml-2">
+                          'columns': [
+                        </span>
+                        <br />
+                        <span class="ml-4">
+                          {
+                        </span>
+                        <br />
+                        <span class="ml-5">
+                          'header': 'First Name'
+                        </span>
+                        <br />
+                        <span class="ml-4">
+                          }
+                        </span>
+                        <br />
+                        <span class="ml-4">
+                          {
+                        </span>
+                        <br />
+                        <span class="ml-5">
+                          'header': 'Job'
+                        </span>
+                        <br />
+                        <span class="ml-4">
+                          }
+                        </span>
+                        <br />
+                        <span class="ml-4">
+                          {
+                        </span>
+                        <br />
+                        <span class="ml-5">
+                          'header': 'Age'
+                        </span>
+                        <br />
+                        <span class="ml-4">
+                          }
+                        </span>
+                        <br />
+                        <span class="ml-2">
+                          ]
+                        </span>
+                        <br />
+                        <span class="ml-2">
+                          'data': [
+                        </span>
+                        <br />
+                        <span class="ml-5">
+                          ['John', 'Math Teacher', 27],
+                        </span>
+                        <br />
+                        <span class="ml-5">
+                          ['Alex', 'Softwear Engineer', 34],
+                        </span>
+                        <br />
+                        <span class="ml-5">
+                          ['Matina', 'Chef', 42]
+                        </span>
+                        <br />
+                        <span class="ml-2">
+                          ]
                         </span>
                         <br />
                         });
@@ -96,7 +160,7 @@
                 </div>
                 <div class="form-group">
                     <div class="alert alert-primary" role="alert">
-                        DataTables need Bootstrap css file to be beautiful, so make sure that you have included the link.
+                        DataTables need Bootstrap css and js files, so make sure that you have included them.
                       </div>
                 </div>
             </div>
@@ -111,7 +175,23 @@
 
         window.onload = function() {
             newJsDataTable('dt', {
-                'type': 'demo'
+                'type': 'client',
+                'columns': [
+                  {
+                    'header': 'First Name'
+                  },
+                  {
+                    'header': 'Job'
+                  },
+                  {
+                    'header': 'Age'
+                  }
+                ],
+                'data': [
+                  ['John', 'Math Teacher', 27],
+                  ['Alex', 'Softwear Engineer', 34],
+                  ['Matina', 'Chef', 42]
+                ]
             });
 
             document.getElementsByClassName('code')[0].innerText = '<div id="dt"></div>';
