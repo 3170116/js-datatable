@@ -30,10 +30,17 @@
 
     <div class="container mt-4">
         <div class="row">
-            <div class="col-md-6 col-sm-12">
+          <div class="col-md-12">
+            <div class="alert alert-warning" role="alert">
+                Next update will include paging.
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 col-sm-12">
                 <div class="form-group">
-                    <label class="h5">
-                        Add below link and script to your project to generate datatables:
+                    <label class="label">
+                        Add below files to your project to generate datatables:
                     </label>
                 </div>
                 <div class="form-group">
@@ -43,12 +50,12 @@
                           <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
-                                    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
-                                    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
-                                  </svg>
+                                  <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+                                  <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+                                </svg>
                             </div>
                           </div>
-                          <input type="text" class="form-control" value="https://github.com/3170116/js-datatable/blob/930e7a7052d08c35a76fe59e4755a286517da4e7/js-datatable.css" readonly>
+                          <input type="text" class="form-control" value="js-datatable.css" readonly>
                         </div>
                     </div>
                     <div class="col-auto">
@@ -58,15 +65,35 @@
                             <div class="input-group-text">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-slash" viewBox="0 0 16 16">
                                     <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"/>
-                                  </svg>
+                                </svg>
                             </div>
                           </div>
-                          <input type="text" class="form-control" value="https://github.com/3170116/js-datatable/blob/930e7a7052d08c35a76fe59e4755a286517da4e7/js-datatable.js" readonly>
+                          <input type="text" class="form-control" value="js-datatable.js" readonly>
                         </div>
                     </div>
                 </div>
+
+                <div class="form-group">
+                  <label class="label">
+                    Repository URL:
+                  </label>
+                  <div class="col-auto">
+                    <label class="sr-only" for="inlineFormInputGroup">Css</label>
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+                            <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+                            <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+                          </svg>
+                        </div>
+                      </div>
+                      <input type="text" class="form-control" value="https://github.com/3170116/js-datatable" readonly>
+                    </div>
+                </div>
+                </div>
             </div>
-            <div class="col-md-6 col-sm-12">
+            <div class="col-md-7 col-sm-12">
                 <div id="dt"></div>
             </div>
         </div>
@@ -85,6 +112,10 @@
                 <div class="form-group">
                     <div class="code">
                         newJsDataTable('dt', {
+                        <br />
+                        <span class="ml-2">
+                          'size': 10,
+                        </span>
                         <br />
                         <span class="ml-2">
                             'type': 'client',
@@ -160,8 +191,8 @@
                 </div>
                 <div class="form-group">
                     <div class="alert alert-primary" role="alert">
-                        DataTables need Bootstrap css and js files, so make sure that you have included them.
-                      </div>
+                      Make sure that you have included Bootstrap and JQuery in your project so datatables can work.
+                    </div>
                 </div>
             </div>
         </div>
@@ -175,6 +206,7 @@
 
         window.onload = function() {
             newJsDataTable('dt', {
+                'size': 10,
                 'type': 'client',
                 'columns': [
                   {
