@@ -7,20 +7,22 @@ class JsDataTable {
         this.options = options;
 
         this.page = 0;
+        this.search = '';
     }
 
     getFilteredData(search) {
         let data = [];
 
-        if (this.options.type == 'client') {
-            let index = 0;
-            search = search.toLowerCase();
+        this.search = search == undefined ? this.search : search.toLowerCase();
 
-            while (index < this.options.data.length && data.length <= this.options.size) {
+        if (this.options.type == 'client') {
+            let index = this.page;
+
+            while (index < this.options.data.length && data.length < this.options.size) {
                 let row = this.options.data[index];
 
                 for (let i = 0; i < row.length; i++) {
-                    if (search == '' || (row[i] + '').toLowerCase() == search) {
+                    if ((row[i] + '').toLowerCase().includes(this.search)) {
                         data.push(row);
                         break;
                     }
@@ -31,6 +33,42 @@ class JsDataTable {
         }
         
         return data;
+    }
+
+    getPagination() {
+        let pagination = '<ul class="pagination">';
+
+        if (this.options.type == 'client') {
+            for (let i = 0, j = 0; j < this.#getAvailablePaginations(); i += this.options.size, j++) {
+                pagination += '<li class="page-item' + (this.page == i ? ' active' : '') + '"><a class="js-table-page-link page-link" js-table-id="' + this.id + '" onclick="setJsDataTablePage(this,' + i + ')">' + (j + 1) + '</a></li>';
+            }
+        }
+
+        pagination += '</ul>'
+        return pagination;
+    }
+
+    #getAvailablePaginations() {
+        let paginations = 0;
+
+        if (this.options.type == 'client') {
+            let index = 0;
+
+            while (index < this.options.data.length) {
+                let row = this.options.data[index];
+
+                for (let i = 0; i < row.length; i++) {
+                    if ((row[i] + '').toLowerCase().includes(this.search)) {
+                        paginations++;
+                        break;
+                    }
+                }
+
+                index++;
+            }
+        }
+
+        return paginations / this.options.size;
     }
 }
 
@@ -53,6 +91,31 @@ function searchJsDataTable(searchElement) {
     }
     
     document.getElementById('js-table-' + id).getElementsByTagName('tbody')[0].innerHTML = html;
+    document.getElementsByClassName('js-table-pagination-list')[0].innerHTML = table.getPagination();
+}
+
+function setJsDataTablePage(pagingElement, page) {
+    let id = pagingElement.getAttribute('js-table-id');
+    let table = jsDataTables.filter(x => x.id == id)[0];
+
+    table.page = page;
+    
+    let html = '';
+    let data = table.getFilteredData();
+
+    for (let i = 0; i < data.length; i++) {
+        let row = '<tr class="js-table-row">';
+
+        for (let j = 0; j < data[i].length; j++) {
+            row += '<td class="js-table-cell">' + data[i][j] + '</td>';
+        }
+
+        row += '</tr>';
+        html += row;
+    }
+    
+    document.getElementById('js-table-' + id).getElementsByTagName('tbody')[0].innerHTML = html;
+    document.getElementsByClassName('js-table-pagination-list')[0].innerHTML = table.getPagination();
 }
 
 function newJsDataTable(id, options) {
@@ -105,6 +168,11 @@ function newJsDataTable(id, options) {
 
     //End of 'table' tag
     html += '</table>'
+
+    //Add pagination
+    let pagination = '<nav class="js-table-pagination-list" js-table-id="' + id + '">' + jsDataTable.getPagination() + '</nav>';
+    html += pagination;
+
     dt.innerHTML = html;
 
 }

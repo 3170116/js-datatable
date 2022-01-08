@@ -32,7 +32,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="alert alert-warning" role="alert">
-                Next update will include paging.
+                Next update will include the ability to specify a type to each header.
             </div>
           </div>
         </div>
@@ -114,7 +114,7 @@
                         newJsDataTable('dt', {
                         <br />
                         <span class="ml-2">
-                          'size': 10,
+                          'size': 2,
                         </span>
                         <br />
                         <span class="ml-2">
@@ -181,6 +181,10 @@
                           ['Matina', 'Chef', 42]
                         </span>
                         <br />
+                        <span class="ml-5">
+                          ['Nick', 'Bezos', 31]
+                        </span>
+                        <br />
                         <span class="ml-2">
                           ]
                         </span>
@@ -191,7 +195,7 @@
                 </div>
                 <div class="form-group">
                     <div class="alert alert-primary" role="alert">
-                      Make sure that you have included Bootstrap and JQuery in your project so datatables can work.
+                      Make sure that you have included Bootstrap in your project so datatables can work.
                     </div>
                 </div>
             </div>
@@ -206,7 +210,7 @@
 
         window.onload = function() {
             newJsDataTable('dt', {
-                'size': 10,
+                'size': 2,
                 'type': 'client',
                 'columns': [
                   {
@@ -222,7 +226,8 @@
                 'data': [
                   ['John', 'Math Teacher', 27],
                   ['Alex', 'Softwear Engineer', 34],
-                  ['Matina', 'Chef', 42]
+                  ['Matina', 'Chef', 42],
+                  ['Nick', 'Bezos', 31]
                 ]
             });
 

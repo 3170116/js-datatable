@@ -1,6 +1,7 @@
 input.js-table-search {
-    width: 45%!important;
+    width: 35%!important;
     float: right;
+    margin-bottom: 0.3em;
 }
 
 table.js-table {
@@ -9,4 +10,12 @@ table.js-table {
 
 th.js-table-number, td.js-table-number {
     text-align: right;
+}
+
+nav.js-table-pagination-list {
+    float: right;
+}
+
+a.js-table-page-link {
+    cursor: pointer;
 }
