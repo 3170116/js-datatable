@@ -33,27 +33,78 @@
             <div class="col-md-3 col-sm-12">
               <div class="form-group">
                 <label class="h4">
-                  Properties:
+                  Parameters:
                 </label>
               </div>
               <div id="list-example" class="list-group">
-                <a class="list-group-item list-group-item-action" href="#list-item-1">
-                  size: integer
-                </a>
-                <a class="list-group-item list-group-item-action" href="#list-item-2">
-                  type: string
-                </a>
-                <a class="list-group-item list-group-item-action" href="#list-item-3">
+                <a class="list-group-item list-group-item-action" href="#list-item-columns">
                   columns: array
                 </a>
-                <a class="list-group-item list-group-item-action" href="#list-item-4">
+                <a class="list-group-item list-group-item-action" href="#list-item-data">
                   data: array
+                </a>
+                <a class="list-group-item list-group-item-action" href="#list-item-pagers">
+                  pagers: array
+                </a>
+                <a class="list-group-item list-group-item-action" href="#list-item-size">
+                  size: integer
+                </a>
+                <a class="list-group-item list-group-item-action" href="#list-item-type">
+                  type: string
                 </a>
               </div>
             </div>
             <div class="col-md-9 col-sm-12">
 
-              <div id="list-item-1" class="card">
+              <div id="list-item-columns" class="card">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    columns <span class="badge badge-danger">Required</span>
+                  </h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    array
+                  </h6>
+                  <p class="card-text">
+                    Describes meta data for each column. Each element is an object with:
+                    <br />
+                    <i>'header'</i> : <span>the title to display to each column</span>
+                    <br />
+                    <i>'type'</i> : <span>the type of the data to each column (<i>'string'</i> or <i>'number'</i>)</span>
+                  </p>
+                </div>
+              </div>
+
+              <div id="list-item-data" class="card">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    data <span class="badge badge-info">Optional</span>
+                  </h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    array
+                  </h6>
+                  <p class="card-text">
+                    Stores the data only when <i>type</i> is <i>'client'</i>. Each element is an array containing the data for each column.
+                  </p>
+                </div>
+              </div>
+
+              <div id="list-item-pagers" class="card">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    pagers <span class="badge badge-info">Optional</span>
+                  </h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    array
+                  </h6>
+                  <p class="card-text">
+                    Stores the available sizes.
+                    <br />
+                    Value <i>-1</i> means <i>All</i>.
+                  </p>
+                </div>
+              </div>
+
+              <div id="list-item-size" class="card">
                 <div class="card-body">
                   <h5 class="card-title">
                     size <span class="badge badge-danger">Required</span>
@@ -67,7 +118,7 @@
                 </div>
               </div>
 
-              <div id="list-item-2" class="card">
+              <div id="list-item-type" class="card">
                 <div class="card-body">
                   <h5 class="card-title">
                     type <span class="badge badge-danger">Required</span>
@@ -78,39 +129,7 @@
                   <p class="card-text">
                     Specifies the source of data.
                     <br />
-                    <i>'client'</i> <span>or</span> <i>'server'</i>
-                  </p>
-                </div>
-              </div>
-
-              <div id="list-item-3" class="card">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    columns <span class="badge badge-danger">Required</span>
-                  </h5>
-                  <h6 class="card-subtitle mb-2 text-muted">
-                    array
-                  </h6>
-                  <p class="card-text">
-                    Describes meta data for each column.
-                    <br />
-                    <i>'header'</i> : <span>the title to display to each column</span>
-                    <br />
-                    <i>'type'</i> : <span>the type of the data to each column (string, number)</span>
-                  </p>
-                </div>
-              </div>
-
-              <div id="list-item-4" class="card">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    data <span class="badge badge-info">Optional</span>
-                  </h5>
-                  <h6 class="card-subtitle mb-2 text-muted">
-                    array
-                  </h6>
-                  <p class="card-text">
-                    Stores the data only when <i>type</i> is <i>'client'</i>. Each element is an array containing the data for each column.
+                    The value can be <i>'client'</i> <span>or</span> <i>'server'</i>
                   </p>
                 </div>
               </div>

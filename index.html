@@ -32,7 +32,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="alert alert-warning" role="alert">
-                Next update will include the ability to specify a list of available sizes.
+                Next update will include the ability to add css classes to table.
             </div>
           </div>
         </div>
@@ -114,6 +114,10 @@
                         <br />
                         <span class="ml-2">
                           'size': 2,
+                        </span>
+                        <br />
+                        <span class="ml-2">
+                          'pagers': [2, 4, -1],
                         </span>
                         <br />
                         <span class="ml-2">
@@ -222,6 +226,7 @@
         window.onload = function() {
             newJsDataTable('dt', {
                 'size': 2,
+                'pagers': [2, 4, -1],
                 'type': 'client',
                 'columns': [
                   {

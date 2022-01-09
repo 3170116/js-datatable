@@ -1,3 +1,9 @@
+select.js-table-pagers {
+    width: 15%!important;
+    float: left;
+    margin-bottom: 0.3em;
+}
+
 input.js-table-search {
     width: 35%!important;
     float: right;
