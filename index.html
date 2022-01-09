@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Js DataTable</title>
+  <title>Easy DataTables by Bek</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -12,7 +12,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html">JS - DataTable</a>
+        <a class="navbar-brand" href="index.html">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -32,7 +32,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="alert alert-warning" role="alert">
-                Next update will include the ability to specify a type to each header.
+                Next update will include the ability to specify a list of available sizes.
             </div>
           </div>
         </div>
@@ -49,10 +49,9 @@
                         <div class="input-group mb-2">
                           <div class="input-group-prepend">
                             <div class="input-group-text">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
-                                  <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
-                                  <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
-                                </svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-slash" viewBox="0 0 16 16">
+                                <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"/>
+                              </svg>
                             </div>
                           </div>
                           <input type="text" class="form-control" value="js-datatable.css" readonly>
@@ -130,7 +129,11 @@
                         </span>
                         <br />
                         <span class="ml-5">
-                          'header': 'First Name'
+                          'header': 'First Name',
+                        </span>
+                        <br />
+                        <span class="ml-5">
+                          'type': 'string'
                         </span>
                         <br />
                         <span class="ml-4">
@@ -142,7 +145,11 @@
                         </span>
                         <br />
                         <span class="ml-5">
-                          'header': 'Job'
+                          'header': 'Job',
+                        </span>
+                        <br />
+                        <span class="ml-5">
+                          'type': 'string'
                         </span>
                         <br />
                         <span class="ml-4">
@@ -154,7 +161,11 @@
                         </span>
                         <br />
                         <span class="ml-5">
-                          'header': 'Age'
+                          'header': 'Age',
+                        </span>
+                        <br />
+                        <span class="ml-5">
+                          'type': 'number'
                         </span>
                         <br />
                         <span class="ml-4">
@@ -214,13 +225,16 @@
                 'type': 'client',
                 'columns': [
                   {
-                    'header': 'First Name'
+                    'header': 'First Name',
+                    'type': 'string'
                   },
                   {
-                    'header': 'Job'
+                    'header': 'Job',
+                    'type': 'string'
                   },
                   {
-                    'header': 'Age'
+                    'header': 'Age',
+                    'type': 'number'
                   }
                 ],
                 'data': [

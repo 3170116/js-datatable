@@ -10,13 +10,13 @@ class JsDataTable {
         this.search = '';
     }
 
-    getFilteredData(search) {
+    getFilteredData(search, start) {
         let data = [];
 
         this.search = search == undefined ? this.search : search.toLowerCase();
 
         if (this.options.type == 'client') {
-            let index = this.page;
+            let index = start;
 
             while (index < this.options.data.length && data.length < this.options.size) {
                 let row = this.options.data[index];
@@ -39,7 +39,7 @@ class JsDataTable {
         let pagination = '<ul class="pagination">';
 
         if (this.options.type == 'client') {
-            for (let i = 0, j = 0; j < this.#getAvailablePaginations(); i += this.options.size, j++) {
+            for (let i = 0, j = 0; j < this.getAvailablePaginations(); i += this.options.size, j++) {
                 pagination += '<li class="page-item' + (this.page == i ? ' active' : '') + '"><a class="js-table-page-link page-link" js-table-id="' + this.id + '" onclick="setJsDataTablePage(this,' + i + ')">' + (j + 1) + '</a></li>';
             }
         }
@@ -48,7 +48,7 @@ class JsDataTable {
         return pagination;
     }
 
-    #getAvailablePaginations() {
+    getAvailablePaginations() {
         let paginations = 0;
 
         if (this.options.type == 'client') {
@@ -77,18 +77,20 @@ function searchJsDataTable(searchElement) {
     let table = jsDataTables.filter(x => x.id == id)[0];
     
     let html = '';
-    let data = table.getFilteredData(searchElement.value);
+    let data = table.getFilteredData(searchElement.value, 0);
 
     for (let i = 0; i < data.length; i++) {
         let row = '<tr class="js-table-row">';
 
         for (let j = 0; j < data[i].length; j++) {
-            row += '<td class="js-table-cell">' + data[i][j] + '</td>';
+            row += '<td' + (table.options.columns[j].type == 'number' ? ' class="js-table-cell js-table-number"' : ' class="js-table-cell"') + ' >' + data[i][j] + '</td>';
         }
 
         row += '</tr>';
         html += row;
     }
+    
+    table.page = 0;
     
     document.getElementById('js-table-' + id).getElementsByTagName('tbody')[0].innerHTML = html;
     document.getElementsByClassName('js-table-pagination-list')[0].innerHTML = table.getPagination();
@@ -101,13 +103,13 @@ function setJsDataTablePage(pagingElement, page) {
     table.page = page;
     
     let html = '';
-    let data = table.getFilteredData();
+    let data = table.getFilteredData(undefined, page);
 
     for (let i = 0; i < data.length; i++) {
         let row = '<tr class="js-table-row">';
 
         for (let j = 0; j < data[i].length; j++) {
-            row += '<td class="js-table-cell">' + data[i][j] + '</td>';
+            row += '<td' + (table.options.columns[j].type == 'number' ? ' class="js-table-cell js-table-number"' : ' class="js-table-cell"') + ' >' + data[i][j] + '</td>';
         }
 
         row += '</tr>';
@@ -142,7 +144,7 @@ function newJsDataTable(id, options) {
         let headers = '<thead class="js-table-thead"><tr class="js-table-header">'
         
         for (let i = 0; i < options.columns.length; i++) {
-            headers += '<th scope="col">' + options.columns[i].header + '</th>'
+            headers += '<th' + (options.columns[i].type == 'number' ? ' class="js-table-number"' : ' ') + 'scope="col">' + options.columns[i].header + '</th>'
         }
 
         headers += '</tr></thead>'
@@ -152,13 +154,13 @@ function newJsDataTable(id, options) {
 
     //Add rows
     if (options.type == 'client') {
-        let data = jsDataTable.getFilteredData('');
+        let data = jsDataTable.getFilteredData('', 0);
 
         for (let i = 0; i < data.length; i++) {
             let row = '<tr class="js-table-row">';
 
             for (let j = 0; j < data[i].length; j++) {
-                row += '<td class="js-table-cell">' + data[i][j] + '</td>';
+                row += '<td' + (options.columns[j].type == 'number' ? ' class="js-table-cell js-table-number"' : ' class="js-table-cell"') + '>' + data[i][j] + '</td>';
             }
 
             row += '</tr>';

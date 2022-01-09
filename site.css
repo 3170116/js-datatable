@@ -1,3 +1,7 @@
+body {
+    position: relative;
+}
+
 input:read-only {
     background-color: rgb(240, 240, 240)!important;
 }
@@ -6,4 +10,8 @@ div.code {
     font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
     background-color: rgb(240, 240, 240);
     padding: 1em;
+}
+
+.card {
+    margin: 1em;
 }
