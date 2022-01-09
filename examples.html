@@ -31,15 +31,190 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-12">
-                <h2>
-                    In progress...
-                </h2>
+                <div class="form-group">
+                  <label class="h4">
+                    Covid data for USA
+                  </label>
+                  <br>
+                  <a href="https://api.covidtracking.com/v1/us/daily.json" class="link" target="_blank">
+                    https://api.covidtracking.com/v1/us/daily.json
+                  </a>
+                  <div id="covid-dt"></div>
+                </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#covid-html" role="tab" aria-selected="true">Html</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#covid-settings" role="tab" aria-selected="false">Settings</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#covid-data" role="tab" aria-selected="false">Data</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="covid-html" role="tabpanel">
+                    <div id="covid-code" class="code"></div>
+                  </div>
+                  <div class="tab-pane fade" id="covid-settings" role="tabpanel">
+                    <div class="code">
+                      {
+                      <br />
+                      <span class="ml-2">
+                        'size': 20,
+                      </span>
+                      <br />
+                      <span class="ml-2">
+                        'type': 'client',
+                      </span>
+                      <br />
+                      <span class="ml-2">
+                        'columns': [
+                      </span>
+                      <br />
+                      <span class="ml-4">
+                        {
+                      </span>
+                      <br />
+                      <span class="ml-5">
+                        'header': 'Date',
+                      </span>
+                      <br />
+                      <span class="ml-5">
+                        'type': 'string'
+                      </span>
+                      <br />
+                      <span class="ml-4">
+                        },
+                      </span>
+                      <br />
+                      <span class="ml-4">
+                        {
+                      </span>
+                      <br />
+                      <span class="ml-5">
+                        'header': 'Positive',
+                      </span>
+                      <br />
+                      <span class="ml-5">
+                        'type': 'number'
+                      </span>
+                      <br />
+                      <span class="ml-4">
+                        },
+                      </span>
+                      <br />
+                      <span class="ml-4">
+                        {
+                      </span>
+                      <br />
+                      <span class="ml-5">
+                        'header': 'Negative',
+                      </span>
+                      <br />
+                      <span class="ml-5">
+                        'type': 'number'
+                      </span>
+                      <br />
+                      <span class="ml-4">
+                        }
+                      </span>
+                      <br />
+                      <span class="ml-2">
+                        ],
+                      </span>
+                      <br />
+                      <span class="ml-2">
+                        'data': data
+                      </span>
+                      <br />
+                      }
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="covid-data" role="tabpanel">
+                    <div class="code">
+                      fetch('https://api.covidtracking.com/v1/us/daily.json')
+                      <br />
+                      <span class="ml-2">
+                        .then(response => response.json())
+                      </span>
+                      <br />
+                      <span class="ml-3">
+                        .then(jsonData => {
+                      </span>
+                      <br />
+                      <span class="ml-4">
+                        let data = [];
+                      </span>
+                      <br />
+                      <span class="ml-4">
+                        for (let i = 0; i < jsonData.length; i++) {
+                      </span>
+                      <br />
+                      <span class="ml-5">
+                        data.push([jsonData[i].date, jsonData[i].positive, jsonData[i].negative]);
+                      </span>
+                      <br />
+                      <span class="ml-4">
+                        }
+                      </span>
+                      <br />
+                      <span class="ml-3">
+                        });
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="js-datatable.js"></script>
+    <script type="text/javascript">
+
+      //Fetch covid data
+      fetch('https://api.covidtracking.com/v1/us/daily.json')
+      .then(response => response.json())
+      .then(jsonData => {
+        let data = [];
+
+        for (let i = 0; i < jsonData.length; i++) {
+          data.push([jsonData[i].date, jsonData[i].positive, jsonData[i].negative]);
+        }
+        
+        newJsDataTable('covid-dt', {
+          'size': 20,
+          'type': 'client',
+          'columns': [
+            {
+            'header': 'Date',
+            'type': 'string'
+            },
+            {
+            'header': 'Positive',
+            'type': 'number'
+            },
+            {
+            'header': 'Negative',
+            'type': 'number'
+            }
+          ],
+          'data': data
+        });
+
+        document.getElementById('covid-code').innerText = '<div id="covid-dt"></div>';
+      });
+      
+    </script>
 
 </body>
 </html>
