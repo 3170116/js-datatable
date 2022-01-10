@@ -183,7 +183,8 @@ function newJsDataTable(id, options) {
     html += '<input type="search" class="js-table-search form-control" placeholder="Search..." js-table-id="' + id + '" onchange="searchJsDataTable(this)" />';
 
     //Add a 'table' tag
-    html += '<table id="js-table-' + id + '" class="js-table table table-striped table-bordered">';
+    let cssTable = (options.css && options.css.table) ? (' ' + options.css.table) : '';
+    html += '<table id="js-table-' + id + '" class="js-table table' + cssTable + '">';
 
     //Add headers
     if (options.columns) {
