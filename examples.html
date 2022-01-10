@@ -188,7 +188,7 @@
         let data = [];
 
         for (let i = 0; i < jsonData.length; i++) {
-          data.push([jsonData[i].date, jsonData[i].positive, jsonData[i].negative]);
+          data.push([jsonData[i].date, jsonData[i].positive == null ? '-' : jsonData[i].positive, jsonData[i].negative == null ? '-' : jsonData[i].negative]);
         }
         
         newJsDataTable('covid-dt', {

@@ -25,3 +25,9 @@ nav.js-table-pagination-list {
 a.js-table-page-link {
     cursor: pointer;
 }
+
+a.js-table-page-more {
+    cursor: initial;
+    background-color: transparent!important;
+    border: transparent;
+}
