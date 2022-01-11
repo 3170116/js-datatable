@@ -100,7 +100,7 @@ class JsDataTable {
                     pagination += '<li class="page-item' + (this.page == this.options.size ? ' active' : '') + '"><a class="js-table-page-link page-link" js-table-id="' + this.id + '" onclick="setJsDataTablePage(this,' + this.options.size + ')">2</a></li>';
 
                     pagination += '<li class="page-item"><a class="js-table-page-link page-link js-table-page-more">...</a></li>';
-                    pagination += '<li class="page-item"><a class="js-table-page-link page-link" js-table-id="' + this.id + '" onclick="setJsDataTablePage(this,' + (Math.floor(availablePaginations / 2) * this.options.size) + ')">' + Math.floor(availablePaginations / 2) + '</a></li>';
+                    pagination += '<li class="page-item"><a class="js-table-page-link page-link" js-table-id="' + this.id + '" onclick="setJsDataTablePage(this,' + (Math.floor(availablePaginations / 2) * this.options.size) + ')">' + Math.round(availablePaginations / 2) + '</a></li>';
                     pagination += '<li class="page-item"><a class="js-table-page-link page-link js-table-page-more">...</a></li>';
 
                     pagination += '<li class="page-item' + (this.page == (availablePaginations - 2) * this.options.size ? ' active' : '') + '"><a class="js-table-page-link page-link" js-table-id="' + this.id + '" onclick="setJsDataTablePage(this,' + ((availablePaginations - 2) * this.options.size) + ')">' + (availablePaginations - 1) + '</a></li>';
@@ -109,19 +109,12 @@ class JsDataTable {
                     pagination += '<li class="page-item"><a class="js-table-page-link page-link" js-table-id="' + this.id + '" onclick="setJsDataTablePage(this,0)">1</a></li>';
                     pagination += '<li class="page-item"><a class="js-table-page-link page-link js-table-page-more">...</a></li>';
 
-                    pagination += '<li class="page-item"><a class="js-table-page-link page-link" js-table-id="' + this.id + '" onclick="setJsDataTablePage(this,' + (this.page - this.options.size) + ')">' + Math.floor(this.page / this.options.size) + '</a></li>';
-                    pagination += '<li class="page-item active"><a class="js-table-page-link page-link" js-table-id="' + this.id + '" onclick="setJsDataTablePage(this,' + this.page + ')">' + (Math.floor(this.page / this.options.size) + 1) + '</a></li>';
-                    pagination += '<li class="page-item"><a class="js-table-page-link page-link" js-table-id="' + this.id + '" onclick="setJsDataTablePage(this,' + (this.page + this.options.size) + ')">' + (Math.floor(this.page / this.options.size) + 2) + '</a></li>';
+                    pagination += '<li class="page-item"><a class="js-table-page-link page-link" js-table-id="' + this.id + '" onclick="setJsDataTablePage(this,' + (this.page - this.options.size) + ')">' + Math.round(this.page / this.options.size) + '</a></li>';
+                    pagination += '<li class="page-item active"><a class="js-table-page-link page-link" js-table-id="' + this.id + '" onclick="setJsDataTablePage(this,' + this.page + ')">' + (Math.round(this.page / this.options.size) + 1) + '</a></li>';
+                    pagination += '<li class="page-item"><a class="js-table-page-link page-link" js-table-id="' + this.id + '" onclick="setJsDataTablePage(this,' + (this.page + this.options.size) + ')">' + (Math.round(this.page / this.options.size) + 2) + '</a></li>';
 
                     pagination += '<li class="page-item"><a class="js-table-page-link page-link js-table-page-more">...</a></li>';
                     pagination += '<li class="page-item"><a class="js-table-page-link page-link" js-table-id="' + this.id + '" onclick="setJsDataTablePage(this,' + ((availablePaginations - 1) * this.options.size) + ')">' + availablePaginations + '</a></li>';
-                }
-                
-            
-                if (this.page == 0 || this.page == ((availablePaginations - 1) * this.options.size)) {
-                    
-                } else {
-                    
                 }
             }
 
@@ -151,7 +144,7 @@ class JsDataTable {
             }
         }
 
-        return paginations / this.options.size;
+        return Math.round(paginations / this.options.size);
     }
 }
 

@@ -39,8 +39,8 @@
                   <a href="https://api.covidtracking.com/v1/us/daily.json" class="link" target="_blank">
                     https://api.covidtracking.com/v1/us/daily.json
                   </a>
-                  <div id="covid-dt"></div>
                 </div>
+                <div id="covid-dt"></div>
             </div>
             <div class="col-md-12">
               <div class="form-group">
@@ -67,6 +67,10 @@
                       <br />
                       <span class="ml-2">
                         'size': 20,
+                      </span>
+                      <br />
+                      <span class="ml-2">
+                        'pagers': [10, 20, 30],
                       </span>
                       <br />
                       <span class="ml-2">
@@ -192,7 +196,8 @@
         }
         
         newJsDataTable('covid-dt', {
-          'size': 20,
+          'size': 10,
+          'pagers': [10, 20, 30],
           'type': 'client',
           'columns': [
             {
