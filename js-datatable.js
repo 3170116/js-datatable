@@ -8,6 +8,7 @@ class JsDataTable {
 
         this.page = 0;
         this.search = '';
+        this.sort = [];
     }
 
     getPagersToDisplay() {
@@ -25,7 +26,16 @@ class JsDataTable {
         let headers = '<thead class="js-table-thead"><tr class="js-table-header">';
         
         for (let i = 0; i < this.options.columns.length; i++) {
-            headers += '<th' + (this.options.columns[i].type == 'number' ? ' class="js-table-number"' : ' ') + 'scope="col">' + this.options.columns[i].header + '</th>'
+            let numberClass = this.options.columns[i].type == 'number' ? 'js-table-number' : '';
+            let sortableClass = (this.options.columns[i].sortable == undefined || (this.options.columns[i].sortable != undefined && this.options.columns[i].sortable == true)) ? 'js-table-sortable' : '';
+            
+            headers += '<th class="' + numberClass + ' ' + sortableClass + '" scope="col" ';
+
+            if (sortableClass != '') {
+                headers += 'onclick="setJsDataTableSort(\'' + this.id + '\',' + i + ')"';
+            }
+
+            headers += '>' + this.options.columns[i].header + '</th>';
         }
 
         headers += '</tr></thead>';
@@ -185,6 +195,39 @@ function setJsDataTableSize(selectElement) {
 
     document.getElementById('js-table-' + id).getElementsByTagName('tbody')[0].innerHTML = html;
     document.getElementsByClassName('js-table-pagination-list')[0].innerHTML = table.getPagination();
+}
+
+function setJsDataTableSort(id, sortIndex) {
+    let table = jsDataTables.filter(x => x.id == id)[0];
+
+    if (table.sort[sortIndex] == undefined || table.sort[sortIndex] == 1) {
+        table.sort[sortIndex] = 0;
+
+        if (table.options.type == 'client') {
+            table.options.data.sort((a, b) => {
+                if (typeof(b[sortIndex]) == 'string') {
+                    return a[sortIndex].localeCompare(b[sortIndex]);
+                }
+                return a[sortIndex] - b[sortIndex];
+            });
+        }
+    } else {
+        table.sort[sortIndex] = 1;
+
+        if (table.options.type == 'client') {
+            table.options.data.sort((a, b) => {
+                if (typeof(b[sortIndex]) == 'string') {
+                    return b[sortIndex].localeCompare(a[sortIndex]);
+                }
+                return b[sortIndex] - a[sortIndex];
+            });
+        }
+    }
+
+    let html = table.getDataToDisplay(table.search, table.page);
+    
+    document.getElementById('js-table-' + id).getElementsByTagName('tbody')[0].innerHTML = html;
+    document.getElementsByClassName('js-table-pagination-list')[0].innerHTML = table.getPagination();    
 }
 
 function newJsDataTable(id, options) {

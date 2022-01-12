@@ -18,6 +18,10 @@ th.js-table-number, td.js-table-number {
     text-align: right;
 }
 
+th.js-table-sortable {
+    cursor: pointer;
+}
+
 nav.js-table-pagination-list {
     float: right;
 }
