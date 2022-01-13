@@ -99,6 +99,7 @@ class JsDataTable {
         let availablePaginations = this.getAvailablePaginations();
 
         if (this.options.type == 'client') {
+            pagination += '<li class="page-item"><a class="js-table-page-link page-link" js-table-id="' + this.id + '" onclick="setJsDataTablePreviousPage(this)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg></a></li>';
 
             if (availablePaginations <= 6) {
                 for (let i = 0, j = 0; j < availablePaginations; i += this.options.size, j++) {
@@ -128,6 +129,7 @@ class JsDataTable {
                 }
             }
 
+            pagination += '<li class="page-item"><a class="js-table-page-link page-link" js-table-id="' + this.id + '" onclick="setJsDataTableNextPage(this)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg></a></li>';
         }
 
         pagination += '</ul>'
@@ -228,6 +230,34 @@ function setJsDataTableSort(id, sortIndex) {
     
     document.getElementById('js-table-' + id).getElementsByTagName('tbody')[0].innerHTML = html;
     document.getElementsByClassName('js-table-pagination-list')[0].innerHTML = table.getPagination();    
+}
+
+function setJsDataTablePreviousPage(pagingElement) {
+    let id = pagingElement.getAttribute('js-table-id');
+    let table = jsDataTables.filter(x => x.id == id)[0];
+
+    if (table.page != 0) {
+        table.page -= table.options.size;
+
+        let html = table.getDataToDisplay(table.search, table.page);
+    
+        document.getElementById('js-table-' + id).getElementsByTagName('tbody')[0].innerHTML = html;
+        document.getElementsByClassName('js-table-pagination-list')[0].innerHTML = table.getPagination();
+    }
+}
+
+function setJsDataTableNextPage(pagingElement) {
+    let id = pagingElement.getAttribute('js-table-id');
+    let table = jsDataTables.filter(x => x.id == id)[0];
+
+    if (table.page != (table.getAvailablePaginations() - 1) * table.options.size) {
+        table.page += table.options.size;
+
+        let html = table.getDataToDisplay(table.search, table.page);
+    
+        document.getElementById('js-table-' + id).getElementsByTagName('tbody')[0].innerHTML = html;
+        document.getElementsByClassName('js-table-pagination-list')[0].innerHTML = table.getPagination();
+    }
 }
 
 function newJsDataTable(id, options) {
