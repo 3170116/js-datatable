@@ -11,19 +11,8 @@ class JsDataTable {
         this.sort = [];
     }
 
-    getPagersToDisplay() {
-        let pagers = '<select class="js-table-pagers form-control" js-table-id="' + this.id + '" onchange="setJsDataTableSize(this)">';
-
-        for (let i = 0; i < this.options.pagers.length; i++) {
-            pagers += '<option value="' + this.options.pagers[i] + '"' + (this.options.pagers[i] == this.options.size ? ' selected' : '') + '>' + (this.options.pagers[i] == -1 ? 'All': this.options.pagers[i]) + '</option>';
-        }
-
-        pagers += '</select>';
-        return pagers;
-    }
-
     getHeadersToDisplay() {
-        let headers = '<thead class="js-table-thead"><tr class="js-table-header">';
+        let headers = '';
         
         for (let i = 0; i < this.options.columns.length; i++) {
             let numberClass = this.options.columns[i].type == 'number' ? 'js-table-number' : '';
@@ -35,11 +24,29 @@ class JsDataTable {
                 headers += 'onclick="setJsDataTableSort(\'' + this.id + '\',' + i + ')"';
             }
 
-            headers += '>' + this.options.columns[i].header + '</th>';
+            let arrow = '';
+
+            if (this.sort[i] == 0) {
+                arrow = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/></svg>';
+            } else if (this.sort[i] == 1) {
+                arrow = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/></svg>';
+            }
+
+            headers += '>' + this.options.columns[i].header + arrow + '</th>';
         }
 
-        headers += '</tr></thead>';
         return headers;
+    }
+
+    getPagersToDisplay() {
+        let pagers = '<select class="js-table-pagers form-control" js-table-id="' + this.id + '" onchange="setJsDataTableSize(this)">';
+
+        for (let i = 0; i < this.options.pagers.length; i++) {
+            pagers += '<option value="' + this.options.pagers[i] + '"' + (this.options.pagers[i] == this.options.size ? ' selected' : '') + '>' + (this.options.pagers[i] == -1 ? 'All': this.options.pagers[i]) + '</option>';
+        }
+
+        pagers += '</select>';
+        return pagers;
     }
     
     getDataToDisplay(search, start) {
@@ -210,7 +217,7 @@ function setJsDataTableSort(id, sortIndex) {
                 if (typeof(b[sortIndex]) == 'string') {
                     return a[sortIndex].localeCompare(b[sortIndex]);
                 }
-                return a[sortIndex] - b[sortIndex];
+                return b[sortIndex] - a[sortIndex];
             });
         }
     } else {
@@ -221,13 +228,20 @@ function setJsDataTableSort(id, sortIndex) {
                 if (typeof(b[sortIndex]) == 'string') {
                     return b[sortIndex].localeCompare(a[sortIndex]);
                 }
-                return b[sortIndex] - a[sortIndex];
+                return a[sortIndex] - b[sortIndex];
             });
+        }
+    }
+
+    for (let i = 0; i < table.options.columns.length; i++) {
+        if (i != sortIndex) {
+            table.sort[i] = null;
         }
     }
 
     let html = table.getDataToDisplay(table.search, table.page);
     
+    document.getElementById('js-table-' + id).getElementsByTagName('thead')[0].innerHTML = table.getHeadersToDisplay();
     document.getElementById('js-table-' + id).getElementsByTagName('tbody')[0].innerHTML = html;
     document.getElementsByClassName('js-table-pagination-list')[0].innerHTML = table.getPagination();    
 }
@@ -288,7 +302,9 @@ function newJsDataTable(id, options) {
 
     //Add headers
     if (options.columns) {
+        html += '<thead class="js-table-thead"><tr class="js-table-header">';
         html += jsDataTable.getHeadersToDisplay();
+        html += '</tr></thead>';
     }
 
     //Add rows
