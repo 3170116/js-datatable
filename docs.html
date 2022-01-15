@@ -71,13 +71,15 @@
                     <p class="card-text">
                       Describes meta data for each column. Each element is an object with:
                       <br />
+                      <i>'display'</i>: <span>function with argument <i>row</i> which returns the text to display to each column</span>
+                      <br />
                       <i>'header'</i> : <span>the title to display to each column</span>
+                      <br />
+                      <i>'searchable'</i> : <span>defines if user can search data to this column (default value <i>true</i>)</span>
                       <br />
                       <i>'sortable'</i> : <span>defines if user can sort data based to this column (default value <i>true</i>)</span>
                       <br />
                       <i>'type'</i> : <span>the type of the data to each column (<i>'string'</i> or <i>'number'</i>)</span>
-                      <br />
-                      <i>'display'</i>: <span>function with argument <i>row</i> which returns the text to display to each column</span>
                     </p>
                   </div>
                 </div>

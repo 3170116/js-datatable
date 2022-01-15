@@ -83,12 +83,14 @@ class JsDataTable {
                 let row = this.options.data[index];
 
                 for (let i = 0; i < row.length; i++) {
-                    if ((row[i] + '').toLowerCase().includes(this.search)) {
-                        data.push(row);
-                        break;
+                    if (this.options.columns[i].searchable == undefined || this.options.columns[i].searchable == true) {
+                        if ((row[i] + '').toLowerCase().includes(this.search)) {
+                            data.push(row);
+                            break;
+                        }
                     }
                 }
-
+                
                 index++;
             }
         }
@@ -154,9 +156,11 @@ class JsDataTable {
                 let row = this.options.data[index];
 
                 for (let i = 0; i < row.length; i++) {
-                    if ((row[i] + '').toLowerCase().includes(this.search)) {
-                        paginations++;
-                        break;
+                    if (this.options.columns[i].searchable == undefined || this.options.columns[i].searchable == true) {
+                        if ((row[i] + '').toLowerCase().includes(this.search)) {
+                            paginations++;
+                            break;
+                        }
                     }
                 }
 
@@ -276,7 +280,6 @@ function setJsDataTableNextPage(pagingElement) {
 }
 
 function newJsDataTable(id, options) {
-
     //Add new datatable
     let jsDataTable = new JsDataTable(
         id = id,
@@ -320,4 +323,5 @@ function newJsDataTable(id, options) {
 
     dt.innerHTML = html;
 
+    return jsDataTable;
 }
