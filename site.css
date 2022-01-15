@@ -15,3 +15,12 @@ div.code {
 .card {
     margin: 1em;
 }
+
+.scrollspy-example {
+    height: 20em;
+    overflow: auto;
+}
+
+.ml-6 {
+    margin-left: 4rem;
+}

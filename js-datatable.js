@@ -59,7 +59,8 @@ class JsDataTable {
                 let row = '<tr class="js-table-row">';
 
                 for (let j = 0; j < data[i].length; j++) {
-                    row += '<td' + (this.options.columns[j].type == 'number' ? ' class="js-table-cell js-table-number"' : ' class="js-table-cell"') + ' >' + data[i][j] + '</td>';
+                    let cell = this.options.columns[j].display == undefined ? data[i][j] : this.options.columns[j].display(data[i]);
+                    row += '<td' + (this.options.columns[j].type == 'number' ? ' class="js-table-cell js-table-number"' : ' class="js-table-cell"') + ' >' + cell + '</td>';
                 }
 
                 row += '</tr>';

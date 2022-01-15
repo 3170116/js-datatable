@@ -90,7 +90,23 @@
                       </span>
                       <br />
                       <span class="ml-5">
-                        'type': 'string'
+                        'type': 'string',
+                      </span>
+                      <br />
+                      <span class="ml-5">
+                        'display': function(row) {
+                      </span>
+                      <br />
+                      <span class="ml-6">
+                        let date = row[0] + '';
+                      </span>
+                      <br />
+                      <span class="ml-6">
+                        return date.substring(6, 8) + ' ' + date.substring(4, 6) + ' ' + date.substring(0,4);
+                      </span>
+                      <br />
+                      <span class="ml-5">
+                        }
                       </span>
                       <br />
                       <span class="ml-4">
@@ -202,7 +218,11 @@
           'columns': [
             {
             'header': 'Date',
-            'type': 'string'
+            'type': 'string',
+            'display': function(row) {
+              let date = row[0] + '';
+              return date.substring(6, 8) + ' ' + date.substring(4, 6) + ' ' + date.substring(0,4);
+            },
             },
             {
             'header': 'Positive',

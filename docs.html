@@ -9,7 +9,7 @@
   <link type="text/css" rel="stylesheet" href="js-datatable.css" />
   <link type="text/css" rel="stylesheet" href="site.css" />
 </head>
-<body data-spy="scroll" data-target="#list-example">
+<body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.html">Home</a>
@@ -59,99 +59,103 @@
             </div>
             <div class="col-md-9 col-sm-12">
 
-              <div id="list-item-columns" class="card">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    columns <span class="badge badge-danger">Required</span>
-                  </h5>
-                  <h6 class="card-subtitle mb-2 text-muted">
-                    array
-                  </h6>
-                  <p class="card-text">
-                    Describes meta data for each column. Each element is an object with:
-                    <br />
-                    <i>'header'</i> : <span>the title to display to each column</span>
-                    <br />
-                    <i>'sortable'</i> : <span>defines if user can sort data based to this column (default value <i>true</i>)</span>
-                    <br />
-                    <i>'type'</i> : <span>the type of the data to each column (<i>'string'</i> or <i>'number'</i>)</span>
-                  </p>
+              <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
+                <div id="list-item-columns" class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      columns <span class="badge badge-danger">Required</span>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                      array
+                    </h6>
+                    <p class="card-text">
+                      Describes meta data for each column. Each element is an object with:
+                      <br />
+                      <i>'header'</i> : <span>the title to display to each column</span>
+                      <br />
+                      <i>'sortable'</i> : <span>defines if user can sort data based to this column (default value <i>true</i>)</span>
+                      <br />
+                      <i>'type'</i> : <span>the type of the data to each column (<i>'string'</i> or <i>'number'</i>)</span>
+                      <br />
+                      <i>'display'</i>: <span>function with argument <i>row</i> which returns the text to display to each column</span>
+                    </p>
+                  </div>
                 </div>
-              </div>
-
-              <div id="list-item-css" class="card">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    css <span class="badge badge-info">Optional</span>
-                  </h5>
-                  <h6 class="card-subtitle mb-2 text-muted">
-                    object
-                  </h6>
-                  <p class="card-text">
-                    Holds css classes for table elements.
-                    <br />
-                    Available properties: <i>'table'</i>
-                  </p>
+  
+                <div id="list-item-css" class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      css <span class="badge badge-info">Optional</span>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                      object
+                    </h6>
+                    <p class="card-text">
+                      Holds css classes for table elements.
+                      <br />
+                      Available properties: <i>'table'</i>
+                    </p>
+                  </div>
                 </div>
-              </div>
-
-              <div id="list-item-data" class="card">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    data <span class="badge badge-info">Optional</span>
-                  </h5>
-                  <h6 class="card-subtitle mb-2 text-muted">
-                    array
-                  </h6>
-                  <p class="card-text">
-                    Stores the data only when <i>type</i> is <i>'client'</i>. Each element is an array containing the data for each column.
-                  </p>
+  
+                <div id="list-item-data" class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      data <span class="badge badge-info">Optional</span>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                      array
+                    </h6>
+                    <p class="card-text">
+                      Stores the data only when <i>type</i> is <i>'client'</i>. Each element is an array containing the data for each column.
+                    </p>
+                  </div>
                 </div>
-              </div>
-
-              <div id="list-item-pagers" class="card">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    pagers <span class="badge badge-info">Optional</span>
-                  </h5>
-                  <h6 class="card-subtitle mb-2 text-muted">
-                    array
-                  </h6>
-                  <p class="card-text">
-                    Stores the available sizes.
-                    <br />
-                    Value <i>-1</i> means <i>All</i>.
-                  </p>
+  
+                <div id="list-item-pagers" class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      pagers <span class="badge badge-info">Optional</span>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                      array
+                    </h6>
+                    <p class="card-text">
+                      Stores the available sizes.
+                      <br />
+                      Value <i>-1</i> means <i>All</i>.
+                    </p>
+                  </div>
                 </div>
-              </div>
-
-              <div id="list-item-size" class="card">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    size <span class="badge badge-danger">Required</span>
-                  </h5>
-                  <h6 class="card-subtitle mb-2 text-muted">
-                    integer
-                  </h6>
-                  <p class="card-text">
-                    Specifies the number of rows which will be visible when the table is initialized.
-                  </p>
+  
+                <div id="list-item-size" class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      size <span class="badge badge-danger">Required</span>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                      integer
+                    </h6>
+                    <p class="card-text">
+                      Specifies the number of rows which will be visible when the table is initialized.
+                    </p>
+                  </div>
                 </div>
-              </div>
-
-              <div id="list-item-type" class="card">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    type <span class="badge badge-danger">Required</span>
-                  </h5>
-                  <h6 class="card-subtitle mb-2 text-muted">
-                    string
-                  </h6>
-                  <p class="card-text">
-                    Specifies the source of data.
-                    <br />
-                    The value can be <i>'client'</i> <span>or</span> <i>'server'</i>
-                  </p>
+  
+                <div id="list-item-type" class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      type <span class="badge badge-danger">Required</span>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                      string
+                    </h6>
+                    <p class="card-text">
+                      Specifies the source of data.
+                      <br />
+                      The value can be <i>'client'</i> <span>or</span> <i>'server'</i>
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -161,5 +165,6 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
+
+  </body>
 </html>
