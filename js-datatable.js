@@ -55,17 +55,22 @@ class JsDataTable {
         if (this.options.type == 'client') {
             let data = this.getFilteredData(search, start);
 
-            for (let i = 0; i < data.length; i++) {
-                let row = '<tr class="js-table-row">';
+            if (data.length == 0) {
+                html += 'No data';
+            } else {
+                for (let i = 0; i < data.length; i++) {
+                    let row = '<tr class="js-table-row">';
 
-                for (let j = 0; j < data[i].length; j++) {
-                    let cell = this.options.columns[j].display == undefined ? data[i][j] : this.options.columns[j].display(data[i]);
-                    row += '<td' + (this.options.columns[j].type == 'number' ? ' class="js-table-cell js-table-number"' : ' class="js-table-cell"') + ' >' + cell + '</td>';
+                    for (let j = 0; j < data[i].length; j++) {
+                        let cell = this.options.columns[j].display == undefined ? data[i][j] : this.options.columns[j].display(data[i]);
+                        row += '<td' + (this.options.columns[j].type == 'number' ? ' class="js-table-cell js-table-number"' : ' class="js-table-cell"') + ' >' + cell + '</td>';
+                    }
+
+                    row += '</tr>';
+                    html += row;
                 }
-
-                row += '</tr>';
-                html += row;
             }
+
         }
 
         return html;
