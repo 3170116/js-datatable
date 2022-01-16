@@ -301,8 +301,16 @@ function newJsDataTable(id, options) {
     html += '<input type="search" class="js-table-search form-control" placeholder="Search..." js-table-id="' + id + '" onchange="searchJsDataTable(this)" />';
 
     //Add a 'table' tag
+    if (options.responsive == true) {
+        html += '<div class="table-responsive">';
+    }
+
     let cssTable = (options.css && options.css.table) ? (' ' + options.css.table) : '';
     html += '<table id="js-table-' + id + '" class="js-table table' + cssTable + '">';
+
+    if (options.responsive == true) {
+        html += '</div>';
+    }
 
     //Add headers
     if (options.columns) {

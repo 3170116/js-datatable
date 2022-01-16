@@ -32,7 +32,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="alert alert-warning" role="alert">
-                Next update will include the abillity to define the table as responsive.
+                Next update will show "No data" when the table is empty.
             </div>
           </div>
         </div>
@@ -118,6 +118,10 @@
                         <br />
                         <span class="ml-2">
                           'pagers': [2, 4, -1],
+                        </span>
+                        <br />
+                        <span class="ml-2">
+                          'responsive': true,
                         </span>
                         <br />
                         <span class="ml-2">
@@ -247,6 +251,7 @@
             newJsDataTable('dt', {
                 'size': 2,
                 'pagers': [2, 4, -1],
+                'responsive': true,
                 'css': {
                   'table': 'table-striped table-bordered'
                 },
